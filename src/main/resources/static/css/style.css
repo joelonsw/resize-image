@@ -37,6 +37,14 @@
 }
 
 @media screen and (max-width: 750px) {
+    .container {
+        margin-top: 1.5rem!important;
+    }
+
+    .nav {
+        display: none;
+    }
+
     .resize-form-item {
         width: 300px;
     }

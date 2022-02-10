@@ -5,13 +5,13 @@ let afterResize = document.getElementById("afterResize");
 let downloadBtn = document.getElementById("downloadBtn");
 let imageFileInput = document.getElementById("formFile image");
 let imageFile = null;
-let allowedImageFormat = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+let allowedImageFormat = ["jpg", "jpeg", "png"];
 let sizeOption = document.getElementById("sizeOption");
 let selectedSize = "800";
 let resizedFileName = "";
 
 imageFileInput.addEventListener("change", function() {
-    if (allowedImageFormat.includes(this.files[0].type)) {
+    if (allowedImageFormat.includes(this.files[0].name.split('.').pop().toLowerCase())) {
         imageFile = this.files[0];
     } else {
         alert("File Type Not Supported");
@@ -46,6 +46,7 @@ function sendImageToServer() {
     };
 
     fetch("/resize", requestOptions)
+        .then(response => handleFetchError(response))
         .then(response => response.text())
         .then(fileName => downloadEnable(fileName))
         .catch(() => alert("Error Occurred During Resizing"));
@@ -83,6 +84,7 @@ const paintProgressBar = (percentage) => {
 downloadBtn.onclick = () => {
     let url = "/download/" + resizedFileName;
     fetch(url)
+        .then(response => handleFetchError(response))
         .then(response => response.blob())
         .then(blob => {
             const url = window.URL.createObjectURL(blob);
@@ -95,4 +97,11 @@ downloadBtn.onclick = () => {
             window.URL.revokeObjectURL(url);
         })
         .catch(() => alert("Error Occurred During Download"));
+}
+
+function handleFetchError(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
 }
