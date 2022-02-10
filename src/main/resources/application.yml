@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  config:
+    active:
+      on-profile: local
+image:
+  path: C:\\Users\\joel6\\Desktop\\
+---
+spring:
+  config:
+    active:
+      on-profile: prod
+image:
+  path: C:\\Users\\joel6\\Desktop\\

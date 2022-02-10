@@ -14,10 +14,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.io.*;
+import java.io.FileInputStream;
 
 import static com.example.resizeimage.resize.ResizeFixture.TEST_IMAGE;
-import static com.example.resizeimage.resize.ResizeFixture.TEST_IMAGE_PATH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
