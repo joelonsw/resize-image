@@ -33,6 +33,9 @@ dependencies {
 
 	// Image
 	implementation group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+
+	// Slack
+	implementation 'com.github.maricn:logback-slack-appender:1.4.0'
 }
 
 tasks.named('test') {
