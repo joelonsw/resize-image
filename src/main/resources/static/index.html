@@ -19,7 +19,7 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Github</a></li>
+            <li class="nav-item"><a href="https://github.com/joelonsw/resize-image" class="nav-link active" aria-current="page">Github</a></li>
             <li class="nav-item"><a href="mailto:joel610@likelion.org" class="nav-link">Contact</a></li>
         </ul>
     </header>
@@ -28,16 +28,16 @@
 <div class="resize-form mt-5" id="resizeForm">
     <div class="mb-4 resize-form-item">
         <label for="formFile" class="form-label">Select A Picture</label>
-        <input class="form-control" type="file" id="formFile">
+        <input class="form-control" type="file" id="formFile image" accept="image/*">
     </div>
     <div class="mb-4 resize-form-item">
         <label for="exampleFormControlTextarea1" class="form-label">Select A Size Option</label>
-        <select class="form-select" aria-label="Default select example">
-            <option value="1">Extra Small (480px)</option>
-            <option value="2">Small (640px)</option>
-            <option selected value="3">Medium (800px)</option>
-            <option value="4">Large (1024px)</option>
-            <option value="5">Extra Large (2000px)</option>
+        <select class="form-select" aria-label="Default select example" id="sizeOption" onchange="selectSize()">
+            <option value="480">Extra Small (480px)</option>
+            <option value="640">Small (640px)</option>
+            <option selected value="800">Medium (800px)</option>
+            <option value="1024">Large (1024px)</option>
+            <option value="2000">Extra Large (2000px)</option>
         </select>
     </div>
     <button type="button" id="resizeBtn" class="btn btn-primary resize-btn mt-2">Resize</button>
