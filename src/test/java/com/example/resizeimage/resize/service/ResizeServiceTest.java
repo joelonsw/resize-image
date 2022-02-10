@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static com.example.resizeimage.resize.ResizeFixture.TEST_IMAGE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +31,8 @@ class ResizeServiceTest {
         String resizedImageName = resizeService.resizeImage(multipartFile, 800);
 
         // then
-        assertThat(resizedImageName).contains(LocalDate.now().toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        assertThat(resizedImageName).contains(LocalDate.now().format(formatter));
     }
 
     private MultipartFile convertToMultipartFile(File file) throws IOException {
