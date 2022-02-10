@@ -18,3 +18,6 @@ spring:
       on-profile: prod
 image:
   path: /home/ubuntu/images/
+logging:
+  file:
+    path: /home/ubuntu/
