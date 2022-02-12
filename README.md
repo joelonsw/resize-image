@@ -1,6 +1,5 @@
 ## Resize Your Image
 
----
 ### Link 🚀
 - https://resize-image.site
 
