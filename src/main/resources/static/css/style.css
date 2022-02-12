@@ -4,6 +4,10 @@
     font-family:'Courier New', Courier, monospace;
 }
 
+.title {
+    margin: 0 !important;
+}
+
 .resize-form {
     display: flex;
     flex-direction: column;
