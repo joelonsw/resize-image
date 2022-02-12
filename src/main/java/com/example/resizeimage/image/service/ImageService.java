@@ -3,6 +3,7 @@ package com.example.resizeimage.image.service;
 import com.example.resizeimage.image.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.awt.image.BufferedImage;
@@ -28,5 +29,10 @@ public class ImageService {
 
     public byte[] getFile(String fileName) {
         return imageRepository.getFile(fileName);
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void deleteFiles() {
+        imageRepository.deleteFiles(1);
     }
 }

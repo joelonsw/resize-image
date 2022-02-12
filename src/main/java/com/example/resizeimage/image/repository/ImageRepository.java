@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Repository
 public class ImageRepository {
@@ -31,6 +33,21 @@ public class ImageRepository {
             return IOUtils.toByteArray(new FileInputStream(file));
         } catch (IOException e) {
             throw new IllegalArgumentException("No Such File");
+        }
+    }
+
+    public void deleteFiles(int days) {
+        File imageDirectory = new File(path);
+        if (!imageDirectory.exists()) {
+            throw new IllegalStateException("Image Directory Not Found");
+        }
+
+        for (File file : imageDirectory.listFiles()) {
+            long fileAge = new Date().getTime() - file.lastModified();
+            long desiredAge = TimeUnit.DAYS.toMillis(days);
+            if (fileAge > desiredAge) {
+                file.delete();
+            }
         }
     }
 }
