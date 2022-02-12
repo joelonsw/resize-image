@@ -2,10 +2,13 @@
 
 ### How To Use 📜
 1. Select a image to resize
+
 2. Select a max width/height size
    - Offers 5 size options (480px, 640px, 800px, 1024px, 2000px)
    - Width-Height ratio of the image will remain the same
+
 3. Click `Resize` button
+
 4. Click `Download` button and you can download resized image!
 
 ### Suggestions & Bug Reports 🛠️
