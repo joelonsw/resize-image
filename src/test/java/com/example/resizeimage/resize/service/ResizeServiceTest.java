@@ -28,7 +28,7 @@ class ResizeServiceTest {
         MultipartFile multipartFile = convertToMultipartFile(TEST_IMAGE);
 
         // when
-        String resizedImageName = resizeService.resizeImage(multipartFile, 800);
+        String resizedImageName = resizeService.resizeImage(multipartFile, 800, "automatic");
 
         // then
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");

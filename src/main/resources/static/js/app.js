@@ -8,6 +8,8 @@ let imageFile = null;
 let allowedImageFormat = ["jpg", "jpeg", "png"];
 let sizeOption = document.getElementById("sizeOption");
 let selectedSize = "800";
+let qualityOption = document.getElementById("qualityOption");
+let selectedQuality = "automatic";
 let resizedFileName = "";
 
 imageFileInput.addEventListener("change", function() {
@@ -22,6 +24,10 @@ imageFileInput.addEventListener("change", function() {
 
 function selectSize() {
     selectedSize = sizeOption.options[sizeOption.selectedIndex].value;
+}
+
+function selectQuality() {
+    selectedQuality = qualityOption.options[qualityOption.selectedIndex].value;
 }
 
 resizeBtn.onclick = () => {
@@ -39,6 +45,7 @@ function sendImageToServer() {
     var formData = new FormData();
     formData.append("image", imageFile);
     formData.append("maxLength", selectedSize);
+    formData.append("quality", selectedQuality);
 
     var requestOptions = {
         method: 'POST',

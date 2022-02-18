@@ -16,8 +16,9 @@ public class ResizeController {
 
     @PostMapping("/resize")
     public ResponseEntity<String> resizeImage(@RequestParam("image") MultipartFile image,
-                                              @RequestParam Integer maxLength) {
-        String resizedImageName = resizeService.resizeImage(image, maxLength);
+                                              @RequestParam Integer maxLength,
+                                              @RequestParam String quality) {
+        String resizedImageName = resizeService.resizeImage(image, maxLength, quality);
         return ResponseEntity.ok(resizedImageName);
     }
 }

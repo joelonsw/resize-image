@@ -16,9 +16,9 @@ public class ResizeService {
 
     private final ImageService imageService;
 
-    public String resizeImage(MultipartFile image, Integer maxLength) {
+    public String resizeImage(MultipartFile image, Integer maxLength, String quality) {
         BufferedImage originalImage = convertToBufferedImage(image);
-        BufferedImage resizedImage = resizeImageToRatio(originalImage, maxLength);
+        BufferedImage resizedImage = resizeImageToRatio(originalImage, maxLength, quality);
         String savedImageName = imageService.save(image.getOriginalFilename(), resizedImage);
         return savedImageName;
     }
@@ -31,10 +31,11 @@ public class ResizeService {
         }
     }
 
-    private BufferedImage resizeImageToRatio(BufferedImage originalImage, Integer maxLength) {
+    private BufferedImage resizeImageToRatio(BufferedImage originalImage, Integer maxLength, String quality) {
+        Scalr.Method method = ImageQualitySelector.getMethod(quality);
         if (originalImage.getWidth() < originalImage.getHeight()) {
-            return Scalr.resize(originalImage, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, maxLength);
+            return Scalr.resize(originalImage, method, Scalr.Mode.FIT_TO_HEIGHT, maxLength);
         }
-        return Scalr.resize(originalImage, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_WIDTH, maxLength);
+        return Scalr.resize(originalImage, method, Scalr.Mode.FIT_TO_WIDTH, maxLength);
     }
 }

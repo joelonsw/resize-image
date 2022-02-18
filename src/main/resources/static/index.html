@@ -66,6 +66,14 @@
             <option value="2000">Extra Large (2000px)</option>
         </select>
     </div>
+    <div class="mb-4 resize-form-item">
+        <label for="exampleFormControlTextarea1" class="form-label">Select A Quality Option</label>
+        <select class="form-select" aria-label="Default select example" id="qualityOption" onchange="selectQuality()">
+            <option selected value="automatic">Automatic</option>
+            <option value="balanced">Balanced</option>
+            <option value="quality">Quality</option>
+        </select>
+    </div>
     <button type="button" id="resizeBtn" class="btn btn-primary resize-btn mt-2">Resize</button>
 </div>
 

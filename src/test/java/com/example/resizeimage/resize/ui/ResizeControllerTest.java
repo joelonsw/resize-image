@@ -36,7 +36,7 @@ class ResizeControllerTest {
 
     @BeforeEach
     void setUp() {
-        when(resizeService.resizeImage(any(), any())).thenReturn(RESIZED_IMAGE_NAME);
+        when(resizeService.resizeImage(any(), any(), any())).thenReturn(RESIZED_IMAGE_NAME);
     }
 
     @Test
@@ -46,7 +46,8 @@ class ResizeControllerTest {
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.multipart("/resize")
                 .file("image", mockTestImage.getBytes())
-                .param("maxLength", "800");
+                .param("maxLength", "800")
+                .param("quality", "automatic");
 
         MvcResult mvcResult = mockMvc.perform(request)
                 .andExpect(status().isOk())
