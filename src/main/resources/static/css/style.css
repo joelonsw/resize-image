@@ -40,6 +40,13 @@
     padding: 8px 16px;
 }
 
+.kakao-adfit {
+    margin: 5% 0% 5% 0%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 750px) {
     .container {
         margin-top: 1.5rem!important;
@@ -55,5 +62,12 @@
 
     .progress {
         width: 300px;
+    }
+
+    .kakao-adfit {
+        margin: 15% 0% 15% 0%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
